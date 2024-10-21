@@ -4,8 +4,9 @@
 public class StreamingPlayer implements MediaPlayer {
 
     @Override
-    public void play(String title){
+    public char play(String title){
         System.out.println("Playing Stream: " + title);
+        return 0;
     }
 
     @Override
@@ -14,8 +15,9 @@ public class StreamingPlayer implements MediaPlayer {
     }
 
     @Override
-    public void stop(){
+    public char stop(){
         System.out.println("Stopping Stream.");
 
+        return 0;
     }
 }

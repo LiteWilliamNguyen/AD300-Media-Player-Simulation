@@ -1,2 +1,1 @@
-# AD300 Media Player Simulation
- 
+To run this code, open visual studio code and run the Main class.
