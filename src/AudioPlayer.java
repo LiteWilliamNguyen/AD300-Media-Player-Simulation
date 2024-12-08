@@ -4,9 +4,8 @@
 public class AudioPlayer implements MediaPlayer {
 
     @Override
-    public char play(String title){
+    public void play(String title){
         System.out.println("Playing audio: " + title);
-        return 0;
     }
 
     @Override
@@ -15,9 +14,7 @@ public class AudioPlayer implements MediaPlayer {
     }
 
     @Override
-    public char stop(){
+    public void stop(){
         System.out.println("Stopping audio.");
-
-        return 0;
     }
 }

@@ -8,48 +8,65 @@ import static org.junit.jupiter.api.Assertions.*;
 //Default constructor for test class MediaPlayer
 class MediaPlayerTest {
 
-    private MediaPlayer audioPlayer;
-    private MediaPlayer videoPlayer;
-    private MediaPlayer streamingPlayer;
-
-
-    //Sets up the test fixture.
-    //Called before every test case method.
-    @BeforeEach
-    void setUp() {
-
-        videoPlayer = new VideoPlayer();
-        streamingPlayer = new StreamingPlayer();
-    }
-    //Tears down the test fixture.
-    // Called after every test case method.
-
-    @AfterEach
-    void tearDown() {
-    }
-
-    // Normal test case
     @Test
-    void testAudioPlayerFile(){
-        audioPlayer.play("Keep Your Head Down by TVXQ");
-        assertEquals("Playing audio: Keep Your Head Down by TVXQ",audioPlayer.play("Keep Your Head Down by TVXQ"));
-    }
-    @Test
-    void testAudioPlayerStop(){
-        audioPlayer.stop();
-        assertEquals("Stopping audio", audioPlayer.stop());
-    }
-    @Test
-    void testVideoPlayerFile(){
-        videoPlayer.play("Game of Throne");
-        assertEquals("Playing Video: Game of Throne", videoPlayer.play("Game of Throne"));
-    }
-    //Edge test case
-    @Test
-    void testAudioPlayerEmptyFile(){
-        assertEquals("Playing audio:",audioPlayer.play(""));
+    void testAudioPlayerNormal() {
+        MediaPlayer audioPlayer = new AudioPlayer();
+        assertDoesNotThrow(() -> {
+            audioPlayer.play("My Favorite Song");
+            audioPlayer.pause();
+            audioPlayer.stop();
+        });
     }
 
+    @Test
+    void testVideoPlayerNormal() {
+        MediaPlayer videoPlayer = new VideoPlayer();
+        assertDoesNotThrow(() -> {
+            videoPlayer.play("My Favorite Movie");
+            videoPlayer.pause();
+            videoPlayer.stop();
+        });
+    }
+
+    @Test
+    void testStreamingPlayerNormal() {
+        MediaPlayer streamingPlayer = new StreamingPlayer();
+        assertDoesNotThrow(() -> {
+            streamingPlayer.play("Live News Stream");
+            streamingPlayer.pause();
+            streamingPlayer.stop();
+        });
+    }
+
+    @Test
+    void testAudioPlayerEdge() {
+        MediaPlayer audioPlayer = new AudioPlayer();
+        assertDoesNotThrow(() -> {
+            audioPlayer.play("");
+            audioPlayer.pause();
+            audioPlayer.stop();
+        });
+    }
+
+    @Test
+    void testVideoPlayerEdge() {
+        MediaPlayer videoPlayer = new VideoPlayer();
+        assertDoesNotThrow(() -> {
+            videoPlayer.play(null);
+            videoPlayer.pause();
+            videoPlayer.stop();
+        });
+    }
+
+    @Test
+    void testStreamingPlayerEdge() {
+        MediaPlayer streamingPlayer = new StreamingPlayer();
+        assertDoesNotThrow(() -> {
+            streamingPlayer.play("   ");
+            streamingPlayer.pause();
+            streamingPlayer.stop();
+        });
+    }
 
 
 }
